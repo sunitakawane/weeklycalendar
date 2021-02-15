@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { CalendarContext } from "../common/CalendarContext";
+import React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { format, differenceInMinutes } from "date-fns";
 
@@ -48,8 +47,6 @@ function getStyles(
 
 function DisplayEvent(props: any) {
   const classes = useStyles();
-  const { stateCalendar, setStateCalendar } = useContext(CalendarContext);
-  const { defaultEventDuration } = stateCalendar;
 
   const { calendarEvent, len, sq } = props;
 
@@ -70,16 +67,6 @@ function DisplayEvent(props: any) {
   const position = differenceInMinutes(currentDay, initTime) + 2;
   const duration = differenceInMinutes(endDate, beginDate) - 3;
 
-  const viewEvent = (props: any) => {
-    const { calendarEvent } = props;
-
-    setStateCalendar({
-      ...stateCalendar,
-      openViewDialog: true,
-      calendarEvent,
-    });
-  };
-
   const left = (100 / len) * sq + 1;
 
   const partOfStyle: React.CSSProperties = {
@@ -94,15 +81,6 @@ function DisplayEvent(props: any) {
       id={calendarEvent.id}
       className={classes.marker}
       style={getStyles(left, position / 57 - 2, partOfStyle)}
-      onClick={(eventEl: any) =>
-        viewEvent({
-          eventEl,
-          calendarEvent,
-          defaultEventDuration,
-          stateCalendar,
-          setStateCalendar,
-        })
-      }
     >
       <div className={classes.markerText}>{calendarEvent.title}</div>
       <div className={classes.beginEnd}>

@@ -46,13 +46,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: 12,
   },
   boardContainer: {
-    // borderRight: '1px solid #dadce0',
     overflowX: "auto",
     overflowY: "scroll",
     display: "flex",
     alignItems: "flex-start",
-    // backgroundColor: 'rgba(245, 245, 220, 0.30)',
-    // height: '100%',
   },
   board: {
     minWidth: "100%",
@@ -95,8 +92,6 @@ function CalendarLayoutWeek(props: any) {
   const classes = useStyles();
 
   return (
-    // <div className={classes.content}>
-    //   <div className={classes.drawerHeader} />
     <div className={classes.root}>
       <CalendarDays />
       <Grid
@@ -123,11 +118,6 @@ function CalendarLayoutWeek(props: any) {
 
         <Grid item xs className={classes.boardContainer}>
           <CalendarCells />
-
-          {/* <CalendarBoard
-      selectedWeekIndex={selectedWeekIndex}
-      selectedWeek={selectedWeek}
-    /> */}
         </Grid>
       </Grid>
     </div>

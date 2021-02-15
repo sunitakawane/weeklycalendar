@@ -8,6 +8,13 @@ function Events() {
       description: "description:Test1",
     },
     {
+      id: 8,
+      title: "Test8",
+      begin: "2021/02/22 9:00:00",
+      end: "2021/02/22 15:30:00",
+      description: "description:Test8",
+    },
+    {
       id: 7,
       title: "Test7",
       begin: "2021/02/16 14:00:00",

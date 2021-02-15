@@ -16,14 +16,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
   },
 }));
-const defaultEventDuration = 60; // in minutes
 
 function Calendar(props: any) {
   const classes = useStyles();
   const selectedDate = new Date();
   const [stateCalendar, setStateCalendar] = useState({
     selectedDate,
-    defaultEventDuration,
   });
   const [runAnimation, setRunAnimation] = useState(true);
 

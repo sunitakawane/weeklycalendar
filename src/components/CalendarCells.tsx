@@ -4,7 +4,6 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { format, differenceInMinutes, startOfWeek, addDays } from "date-fns";
 import Grid from "@material-ui/core/Grid";
 import LineDivisor from "./LineDivisor";
-import createEditEvent from "./createEditEvent";
 import DisplayEvent from "./DisplayEvent";
 import Events from "../data/CalendarEvents";
 
@@ -32,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRight: "1px solid #dadce0",
     },
     dayContainer: {
-      // backgroundColor: lightBlue[50],
       borderRight: "1px solid #dadce0",
       position: "relative",
       paddingRight: 12,
@@ -70,10 +68,8 @@ const useStyles = makeStyles((theme: Theme) =>
 function CalendarCells(props: any) {
   const classes = useStyles();
 
-  const { selectedWeekIndex, selectedWeek } = props;
-
-  const { stateCalendar, setStateCalendar } = useContext(CalendarContext);
-  const { selectedDate, defaultEventDuration } = stateCalendar;
+  const { stateCalendar } = useContext(CalendarContext);
+  const { selectedDate } = stateCalendar;
 
   const [currentTimePosition, setCurrentTimePosition] = useState(100);
 
@@ -92,7 +88,6 @@ function CalendarCells(props: any) {
     days.push(addDays(startDate, i));
   }
 
-  const localStorageMarkers = window.localStorage.getItem("markers");
   const getEventData = (day: Date) => {
     console.log("getting events...");
 
@@ -173,15 +168,7 @@ function CalendarCells(props: any) {
           data-group="day-column"
           data-date={day}
           className={classes.dayContainer}
-          key={`board-day-column-${selectedWeekIndex}-${day}-${day}`}
-          onClick={(eventEl: any) =>
-            createEditEvent({
-              eventEl,
-              defaultEventDuration,
-              stateCalendar,
-              setStateCalendar,
-            })
-          }
+          key={`board-day-column-${day}`}
         >
           {isToday && <CurrentTimeMark marginTop={currentTimePosition} />}
 
@@ -193,19 +180,8 @@ function CalendarCells(props: any) {
         </Grid>
       );
     });
-    // ....
-    // ....
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    classes,
-    defaultEventDuration,
-    getEventData,
-
-    selectedDate,
-    selectedWeek,
-    selectedWeekIndex,
-    localStorageMarkers,
-  ]);
+  }, [classes, getEventData, selectedDate]);
 
   return (
     <Grid
