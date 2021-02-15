@@ -5,7 +5,7 @@ import { format, differenceInMinutes, startOfWeek, addDays } from "date-fns";
 import Grid from "@material-ui/core/Grid";
 import LineDivisor from "./LineDivisor";
 import createEditEvent from "./createEditEvent";
-import EventMark from "./EventMark";
+import DisplayEvent from "./DisplayEvent";
 import Events from "../data/CalendarEvents";
 
 type event = {
@@ -133,7 +133,7 @@ function CalendarCells(props: any) {
           (event: any) => new Date(event.begin).getHours() === evHour.hour
         )
         .map((event: any, index: number) => (
-          <EventMark
+          <DisplayEvent
             key={`event-${event.id}`}
             calendarEvent={event}
             sq={index}

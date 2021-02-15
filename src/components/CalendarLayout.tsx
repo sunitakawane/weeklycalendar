@@ -18,14 +18,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 0,
     height: "100%",
     width: "100%",
-    minWidth: 1000,
   },
 }));
 function CalendarLayout(props: any) {
   const classes = useStyles();
 
-  //   const selectedWeekIndex = getSelectedWeekIndex(selectedDate, weeks, 0);
-  //   const selectedWeek = weeks[selectedWeekIndex];
   return (
     <div className={classes.content}>
       <div className={classes.drawerHeader} />

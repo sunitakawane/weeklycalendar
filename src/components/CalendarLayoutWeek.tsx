@@ -19,14 +19,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflowX: "scroll",
     overflow: "scroll",
     alignItems: "stretch",
-    "&:before": {
-      backgroundImage: "linear-gradient(to right,white,rgba(255,255,255,0))",
-      content: "",
-      height: 2,
-      position: "absolute",
-      width: 80,
-      zIndex: 51,
-    },
   },
   timeColumnHeader: {
     color: theme.palette.text.secondary,
